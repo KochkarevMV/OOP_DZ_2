@@ -37,10 +37,14 @@ class Triangle (Figure):
     @property
     def get_area(self):
         triP = (self.triA + self.triB + self.triC)/2
-        triS = math.sqrt(triP*(triP-self.triA)*(triP-self.triB)*(triP-self.triC))
+        triS = math.trunc(math.sqrt(triP*(triP-self.triA)*(triP-self.triB)*(triP-self.triC)))
         return triS
 
 
-TriExx = Triangle(4, 3, 5)
-print(TriExx.get_area)
-print(TriExx.get_perimeter)
+Tri1 = Triangle(4, 3, 5)
+Tri2 = Triangle(4, 3, 2)
+
+print(Tri1.get_area)
+print(Tri1.get_perimeter)
+print(Tri1.add_area(Tri2))
+print(Tri2.add_area(Tri1))
