@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import math
 
 
-class Figure (ABC):
+class FigureCirc(ABC):
     
     @abstractmethod
     def get_perimeter(self):
@@ -13,12 +13,12 @@ class Figure (ABC):
         pass
 
     def add_area(self, other_figure):
-        if not isinstance(other_figure, Figure):
+        if not isinstance(other_figure, FigureCirc):
             raise ValueError("Аргументом должна быть фигура. Проверьте данные")
         return self.get_area + other_figure.get_area
     
 
-class Circle(Figure):
+class Circle(FigureCirc):
     def __init__(self, circleRadius):
         if circleRadius <= 0:
             raise ValueError("Радиус круга должен быть больше нуля")

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import math
 
 
-class Figure(ABC):
+class FigureTri(ABC):
 
     @abstractmethod
     def get_perimeter(self):
@@ -13,12 +13,12 @@ class Figure(ABC):
         pass
      
     def add_area(self, other_figure):
-        if not isinstance(other_figure, Figure):
+        if not isinstance(other_figure, FigureTri):
             raise ValueError("Аргументом должна быть фигура. Проверьте данные")
         return self.get_area + other_figure.get_area
    
 
-class Triangle (Figure):
+class Triangle (FigureTri):
     def __init__(self, triA, triB, triC):
         if triA == triB or triA == triC or triB == triC:
             raise ValueError("Стороны треугольника должны быть разными")
