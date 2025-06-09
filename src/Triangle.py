@@ -3,7 +3,7 @@ import math
 
 
 class Figure(ABC):
-    
+
     @abstractmethod
     def get_perimeter(self):
         pass
@@ -45,6 +45,7 @@ Tri1 = Triangle(4, 3, 5)
 Tri2 = Triangle(4, 3, 2)
 
 print(Tri1.get_area)
+print(Tri2.get_area)
 print(Tri1.get_perimeter)
 print(Tri1.add_area(Tri2))
 print(Tri2.add_area(Tri1))
