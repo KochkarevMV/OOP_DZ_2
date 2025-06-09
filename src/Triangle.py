@@ -22,22 +22,25 @@ class Triangle (Figure):
     def __init__(self, triA, triB, triC):
         if triA == triB or triA == triC or triB == triC:
             raise ValueError("Стороны треугольника должны быть разными")
+        if triA+triB == triC or triA+triC == triB or triC+triB == triA:
+            raise ValueError("Сумма двух сторон не должна быть равна длине третьей")
+        if triA <= 0 or triB <= 0 or triC <= 0:
+            raise ValueError("Длина сторон должна быть больше нуля")
         self.triA = triA
         self.triB = triB
         self.triC = triC
+        
+    @property
+    def get_perimeter(self):
+        return self.triA + self.triB + self.triC
+
+    @property
+    def get_area(self):
+        triP = (self.triA + self.triB + self.triC)/2
+        triS = math.sqrt(triP*(triP-self.triA)*(triP-self.triB)*(triP-self.triC))
+        return triS
 
 
-@property
-def get_perimeter(self):
-    return self.triA + self.triB + self.triC
-
-
-@property
-def get_area(self):
-    triP = (self.triA + self.triB + self.triC)/2
-    triS = math.sqrt(triP*(triP-self.triA)*(triP-self.triB)*(triP-self.triC))
-    return triS
-
-
-TriExx = Triangle(6, 8, 10)
+TriExx = Triangle(4, 3, 5)
 print(TriExx.get_area)
+print(TriExx.get_perimeter)
