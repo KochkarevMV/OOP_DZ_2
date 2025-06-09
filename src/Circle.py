@@ -37,6 +37,7 @@ class Circle(Figure):
 
 Circle1 = Circle(7)
 Circle2 = Circle(5)
+
 print(Circle1.get_perimeter)
 print(Circle1.get_area)
 print(Circle2.get_area)
