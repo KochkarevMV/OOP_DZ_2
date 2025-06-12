@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-import math
 
 
 class FigureSquare(ABC):
@@ -33,9 +32,20 @@ class Square(FigureSquare):
         return self.square_sideA*self.square_sideA
     
 
+class Rectangle(Square):
+    def __init__(self, square_sideA, square_sideB):
+        self.square_sideB = square_sideB
+        if square_sideA <= 0 or square_sideB <= 0:
+            raise ValueError("Сторона прямоугольника должна быть больше нуля")
+        super().__init__(square_sideA)
+
+
 SquareEx = Square(5)
 SquareEx2 = Square(2)
-print(SquareEx.get_perimeter)
-print(SquareEx.get_area)
-print(SquareEx2.get_area)
-print(SquareEx2.add_area(SquareEx))
+Rectangle1 = Rectangle(3, 5)
+print(f" Периметр SquareEx равен {SquareEx.get_perimeter}")
+print(f" Площадь SquareEx равна {SquareEx.get_area}")
+print(f" Площадь SquareEx2 равна {SquareEx2.get_area}")
+print(f" Сумма площадей SquareEx и SquareEx2 равна {SquareEx2.add_area(SquareEx)}")
+print(f" Площадь Rectangle1 равна {Rectangle1.get_area}")
+print(f" Сумма площадей SquareEx и Rectangle1 равна {SquareEx.add_area(Rectangle1)}")

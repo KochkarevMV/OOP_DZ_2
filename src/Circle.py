@@ -35,10 +35,27 @@ class Circle(FigureCirc):
         return circleArea
     
 
+class Triangle (Circle):
+    def __init__(self, TriA, TriB, TriC, circleRadius):
+        self.TriA = TriA
+        self.TriB = TriB
+        self.TriC = TriC
+        super().__init__(circleRadius)
+    
+    @property
+    def get_area(self):
+        TriArea = math.trunc((self.TriA * self.TriB * self.TriC) / (4 * self.circleRadius))
+        return TriArea
+
+
 Circle1 = Circle(7)
 Circle2 = Circle(5)
+Triangle1 = Triangle(4, 3, 5, 8)
 
-print(Circle1.get_perimeter)
-print(Circle1.get_area)
-print(Circle2.get_area)
-print(Circle1.add_area(Circle2))
+
+print(f" Периметр Circle1 равен {Circle1.get_perimeter}")
+print(f" Площадь Circle1 равна {Circle1.get_area}")
+print(f" Площадь Circle2 равна {Circle2.get_area}")
+print(f" Сумма площадей Circle1 и Circle2 равна {Circle1.add_area(Circle2)}")
+print(f" Площадь Triangle1 равна {Triangle1.get_area}")
+print(f" Сумма площадей Circle1 и Triangle 1 равна {Triangle1.add_area(Circle1)}")

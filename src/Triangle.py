@@ -21,7 +21,7 @@ class FigureTri(ABC):
 class Triangle (FigureTri):
     def __init__(self, triA, triB, triC):
         if triA == triB or triA == triC or triB == triC:
-            raise ValueError("Стороны треугольника должны быть разными")
+            raise ValueError("Стороны треугольника должны быть разными по длине")
         if triA+triB == triC or triA+triC == triB or triC+triB == triA:
             raise ValueError("Сумма двух сторон не должна быть равна длине третьей")
         if triA <= 0 or triB <= 0 or triC <= 0:
