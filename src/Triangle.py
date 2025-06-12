@@ -18,12 +18,8 @@ class FigureTri(ABC):
         return self.get_area + other_figure.get_area
    
 
-class Triangle (FigureTri):
+class Triangle(FigureTri):
     def __init__(self, triA, triB, triC):
-        if triA == triB or triA == triC or triB == triC:
-            raise ValueError("Стороны треугольника должны быть разными по длине")
-        if triA+triB == triC or triA+triC == triB or triC+triB == triA:
-            raise ValueError("Сумма двух сторон не должна быть равна длине третьей")
         if triA <= 0 or triB <= 0 or triC <= 0:
             raise ValueError("Длина сторон должна быть больше нуля")
         self.triA = triA
@@ -41,11 +37,29 @@ class Triangle (FigureTri):
         return triS
 
 
+class Circle(Triangle):
+    def __init__(self, triA, circleRadius):
+        self.triA = triA
+        triP = (self.triA + self.triA + self.triA)/2
+        triS = math.trunc(math.sqrt(triP*(triP-self.triA)*(triP-self.triA)*(triP-self.triA)))
+        self.circleRadius = circleRadius
+        circleRadius = triS / triP
+        super().__init__(triA, triA, triA)
+    
+    @property
+    def get_area(self):
+        CircleArea = math.trunc((self.triA * self.triA * self.triA) / (4 * self.circleRadius))
+        return CircleArea
+
+
 Tri1 = Triangle(4, 3, 5)
 Tri2 = Triangle(4, 3, 2)
+Circle1 = Circle(4, 8)
 
-print(Tri1.get_area)
-print(Tri2.get_area)
-print(Tri1.get_perimeter)
-print(Tri1.add_area(Tri2))
-print(Tri2.add_area(Tri1))
+
+print(f" Площадь Tri1 равна {Tri1.get_area}")
+print(f" Площадь Tri2 равна {Tri2.get_area}")
+print(f" Периметр Tri1 равен {Tri1.get_perimeter}")
+print(f" Сумма площадей Tri1 и Tri2 равна {Tri1.add_area(Tri2)}")
+print(f" Площадь Circle1 равна {Circle1.get_area}")
+print(f" Сумма площадей Circle1 и Tri1 равна {Circle1.add_area(Tri1)}")
